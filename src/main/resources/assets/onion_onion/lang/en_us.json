@@ -1,0 +1,7 @@
+{
+  "item.onion_onion.onion_slice": "Onion Slices",
+  "item.onion_onion.onion_rings": "Onion Rings",
+
+  "death.attack.onion_damage": "%s cried to death",
+  "death.attack.onion_damage.player": "%1s cried to death to avoid %2s"
+}

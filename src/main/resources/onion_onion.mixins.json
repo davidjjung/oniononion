@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.davigj.onion_onion.core.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "refmap": "onion_onion.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

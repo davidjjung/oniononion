@@ -1,0 +1,46 @@
+modLoader = "javafml"
+loaderVersion = "[32,)"
+issueTrackerURL = ""
+license = "MIT License"
+
+[[mods]]
+modId = "onion_onion"
+version = "${file.jarVersion}"
+logoFile = "logo.png"
+itemIcon = "farmersdelight:onion"
+configBackground = "minecraft:textures/block/dirt.png"
+authors = "DavigJ"
+credits = "Thanks to Vectorwing for makin' such a robust food mod"
+displayURL = ""
+displayName = "Onion Onion"
+description = '''
+    Giving onions some (ill-deserved?) love
+    '''
+
+[[dependencies.onion_onion]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.19.2,1.19.3)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.onion_onion]]
+modId = "forge"
+mandatory = true
+versionRange = "[43.3.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.onion_onion]]
+modId = "blueprint"
+mandatory = true
+versionRange = "[6.2.0,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.onion_onion]]
+modId = "farmersdelight"
+mandatory = true
+versionRange = "[1.2.3,)"
+ordering = "AFTER"
+side = "BOTH"
