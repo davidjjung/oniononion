@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "onion_onion:item/motley_grill_block"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:brown_mushroom",
+    {
+      "id": "spelunkery:button_mushroom",
+      "required": false
+    },
+    {
+      "id": "spelunkery:crimini",
+      "required": false
+    },
+    {
+      "id": "spelunkery:portabella",
+      "required": false
+    }
+  ]
+}

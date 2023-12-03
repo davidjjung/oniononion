@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SFO",
+    "SCO",
+    "RTO"
+  ],
+  "key": {
+    "C": {
+      "item": "farmersdelight:fried_rice"
+    },
+    "F": {
+      "tag": "onion_onion:motley_mushrooms"
+    },
+    "R": {
+      "item": "farmersdelight:cooked_chicken_cuts"
+    },
+    "S": {
+      "tag": "forge:salad_ingredients"
+    },
+    "T": {
+      "item": "minecraft:iron_trapdoor"
+    },
+    "O": {
+      "item": "onion_onion:onion_slice"
+    }
+  },
+  "result": {
+    "item": "onion_onion:motley_grill_block",
+    "count": 1
+  }
+}
