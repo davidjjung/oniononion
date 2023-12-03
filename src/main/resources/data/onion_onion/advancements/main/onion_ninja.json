@@ -1,0 +1,28 @@
+{
+  "parent": "onion_onion:main/onion_ghast",
+  "criteria": {
+    "onion_ninja": {
+      "trigger": "onion_onion:onion_ninja"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.onion_onion.onion_ninja.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "onion_onion:onion_slice"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.onion_onion.onion_ninja.title"
+    }
+  },
+  "requirements": [
+    [
+      "onion_ninja"
+    ]
+  ]
+}

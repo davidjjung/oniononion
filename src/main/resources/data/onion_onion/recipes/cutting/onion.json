@@ -5,13 +5,17 @@
       "item": "farmersdelight:onion"
     }
   ],
-  "tool": {
-    "tag": "forge:tools/knives"
-  },
   "result": [
     {
-      "item": "onion_onion:onion_slice",
-      "count": 2
+      "item": "onion_onion:onion_slice"
+    },
+    {
+      "chance": 0.5,
+      "count": 1,
+      "item": "onion_onion:onion_slice"
     }
-  ]
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
 }

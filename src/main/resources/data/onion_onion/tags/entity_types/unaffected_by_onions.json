@@ -1,0 +1,39 @@
+{
+  "values": [
+    "#minecraft:skeletons",
+    "minecraft:iron_golem",
+    "minecraft:husk",
+    "minecraft:blaze",
+    "minecraft:skeleton_horse",
+    "minecraft:wither",
+    "minecraft:shulker",
+    "minecraft:ender_dragon",
+    "minecraft:enderman",
+    "minecraft:magma_cube",
+    "minecraft:slime",
+    {
+      "id": "sullysmod:copper_golem",
+      "required": false
+    },
+    {
+      "id": "alexsmobs:skelewag",
+      "required": false
+    },
+    {
+      "id": "alexsmobs:mimicube",
+      "required": false
+    },
+    {
+      "id": "quark:forgotten",
+      "required": false
+    },
+    {
+      "id": "rottencreatures:burned",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:copper_golem",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "farmersdelight:main/use_cutting_board",
+  "criteria": {
+    "onion_ghast": {
+      "trigger": "onion_onion:onion_ghast"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.onion_onion.onion_ghast.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:ghast_tear"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.onion_onion.onion_ghast.title"
+    }
+  },
+  "requirements": [
+    [
+      "onion_ghast"
+    ]
+  ]
+}

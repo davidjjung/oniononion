@@ -10,7 +10,15 @@
       "required": false
     },
     {
-      "id": "onion_onion:griefer_helmet",
+      "id": "create:goggles",
+      "required": false
+    },
+    {
+      "id": "savage_and_ravage:griefer_helmet",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:sanguine_helmet",
       "required": false
     }
   ]
