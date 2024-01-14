@@ -24,10 +24,10 @@ public class OOItems {
             new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.7F).build())));
 
     public static final RegistryObject<Item> MOTLEY_GRILL_BLOCK = HELPER.createItem("motley_grill_block", () -> new BlockItem(
-            OOBlocks.MOTLEY_GRILL_BLOCK.get(), new Item.Properties().stacksTo(1).craftRemainder(Items.IRON_TRAPDOOR).tab(CreativeModeTab.TAB_FOOD)));
+            OOBlocks.MOTLEY_GRILL_BLOCK.get(), new Item.Properties().stacksTo(1).craftRemainder(Items.IRON_INGOT).tab(CreativeModeTab.TAB_FOOD)));
 
     public static final RegistryObject<Item> MOTLEY_GRILL = HELPER.createItem("motley_grill", () -> new ConsumableItem(
-            new Item.Properties().food((new FoodProperties.Builder()).nutrition(11).saturationMod(0.7F)
-                    .effect(() -> new MobEffectInstance(ModEffects.NOURISHMENT.get(), 6000), 1.0F).build())
+            new Item.Properties().food((new FoodProperties.Builder()).nutrition(9).saturationMod(0.7F)
+                    .effect(() -> new MobEffectInstance(ModEffects.NOURISHMENT.get(), 180 * 20), 1.0F).build())
                     .craftRemainder(Items.BOWL).stacksTo(16).tab(CreativeModeTab.TAB_FOOD), true));
 }

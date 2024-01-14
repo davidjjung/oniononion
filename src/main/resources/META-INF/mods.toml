@@ -1,6 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "[32,)"
-issueTrackerURL = ""
+issueTrackerURL = "https://github.com/davidjjung/oniononion/issues"
 license = "MIT License"
 
 [[mods]]
@@ -11,7 +11,7 @@ itemIcon = "farmersdelight:onion"
 configBackground = "minecraft:textures/block/dirt.png"
 authors = "DavigJ"
 credits = "Thanks to Vectorwing for makin' such a robust food mod"
-displayURL = ""
+displayURL = "https://github.com/davidjjung/oniononion"
 displayName = "Onion Onion"
 description = '''
     Giving onions some (ill-deserved?) love

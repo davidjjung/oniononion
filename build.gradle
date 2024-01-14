@@ -79,10 +79,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${project.minecraft}-${project.forge}"
     implementation fg.deobf("com.teamabnormals:blueprint:${project.minecraft}-${project.blueprint}")
     implementation fg.deobf("maven.modrinth:R2OftAxM:umpztmTl")
-    implementation fg.deobf("maven.modrinth:bCxmmxKN:HwaPTwXt")
-    runtimeOnly fg.deobf("maven.modrinth:spelunkery:1.19.2-0.2.6-forge")
-    runtimeOnly fg.deobf("maven.modrinth:moonlight:1.19.2-2.3.4-forge")
-
+    compileOnly fg.deobf("maven.modrinth:bCxmmxKN:HwaPTwXt")
 
     compileOnly fg.deobf("mezz.jei:jei-${project.minecraft}-common-api:${project.jei}")
     compileOnly fg.deobf("mezz.jei:jei-${project.minecraft}-forge-api:${project.jei}")

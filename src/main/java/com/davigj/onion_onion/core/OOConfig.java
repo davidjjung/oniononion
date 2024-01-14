@@ -15,7 +15,7 @@ public class OOConfig {
 
         Common (ForgeConfigSpec.Builder builder) {
             builder.push("config");
-            onionFun = builder.comment("Do onions have block/entity reactions when cut").define("Onion fun", true);
+            onionFun = builder.comment("Do onions have block or entity reactions when cut").define("Onion fun", true);
             bigOnion = builder.comment("Do Big Onion blocks from Overweight Farming trigger the effects of cutting onions when peeled").define("Big onion reactions", true);
             onionAOE = builder.comment("The range in which blocks and entities are affected by cutting onions. Capped at 16").define("Onion chop radius", 2);
             builder.push("entity_changes");
