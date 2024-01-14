@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "SFO",
+    "RFO",
     "SCO",
-    "RTO"
+    "STO"
   ],
   "key": {
     "C": {
