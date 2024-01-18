@@ -59,7 +59,7 @@ public class MotleyGrillBlock extends FeastBlock {
             ItemStack serving = this.getServingItem(state);
             ItemStack heldStack = player.getItemInHand(hand);
             if (servings > 0) {
-                if (!serving.hasCraftingRemainingItem() || heldStack.sameItem(serving.getCraftingRemainingItem())) {
+                if (!serving.hasCraftingRemainingItem() || heldStack.is(serving.getCraftingRemainingItem().getItem())) {
                     BlockState platform = level.getBlockState(pos.below());
                     BlockState subPlatform = level.getBlockState(pos.below().below());
                     if (servings == 4 && (platform.is(ModTags.HEAT_SOURCES)
