@@ -62,7 +62,7 @@ public class OOEvents {
                 affectBlocks(event.getPos(), player);
             }
         }
-        if (clickedBlockState.getBlock() == ModBlocks.CUTTING_BOARD.get()) {
+        if (clickedBlockState.getBlock() == ModBlocks.CUTTING_BOARD.get() && !player.isShiftKeyDown()) {
             BlockEntity tileEntity = player.level.getBlockEntity(event.getPos());
             if (tileEntity instanceof CuttingBoardBlockEntity board && board.getStoredItem().getItem() == vectorwing.farmersdelight.common.registry.ModItems.ONION.get()) {
                 if (heldItem.getItem() instanceof KnifeItem) {
