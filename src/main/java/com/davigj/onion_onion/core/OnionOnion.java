@@ -11,6 +11,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+import static com.davigj.onion_onion.core.registry.OOConstants.initializeObbyMap;
+
 @Mod(OnionOnion.MOD_ID)
 public class OnionOnion {
     public static final String MOD_ID = "onion_onion";
@@ -31,7 +33,7 @@ public class OnionOnion {
 
     private void commonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-
+            initializeObbyMap();
         });
     }
 

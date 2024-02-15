@@ -2,6 +2,7 @@ package com.davigj.onion_onion.core.other;
 
 import com.davigj.onion_onion.core.OOConfig;
 import com.davigj.onion_onion.core.OnionOnion;
+import com.davigj.onion_onion.core.registry.OOConstants;
 import com.davigj.onion_onion.core.registry.OODamageSources;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -19,6 +20,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -31,6 +33,8 @@ import vectorwing.farmersdelight.common.item.KnifeItem;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 import java.util.List;
+
+import static com.davigj.onion_onion.core.registry.OOConstants.OBBY_MAP;
 
 @Mod.EventBusSubscriber(modid = OnionOnion.MOD_ID)
 public class OOEvents {
@@ -132,14 +136,14 @@ public class OOEvents {
                         } else {
                             player.level.setBlockAndUpdate(pos.below(), Blocks.WEEPING_VINES.defaultBlockState());
                         }
-                    } else if (state.is(Blocks.OBSIDIAN) && random.nextDouble() <= OOConfig.COMMON.cryingObby.get()) {
+                    } else if (OBBY_MAP.containsKey(state.getBlock()) && random.nextDouble() <= OOConfig.COMMON.cryingObby.get()) {
                         if (player.level.isClientSide) {
                             for (int i = 0; i < 4; i++) {
                                 player.level.addParticle(ParticleTypes.DRAGON_BREATH, pos.getX() + random.nextDouble() - 0.5,
                                         pos.getY() + random.nextDouble(), pos.getZ() + random.nextDouble() - 0.5, 0, 0, 0);
                             }
                         } else {
-                            player.level.setBlockAndUpdate(pos, Blocks.CRYING_OBSIDIAN.defaultBlockState());
+                            player.level.setBlock(pos, OBBY_MAP.get(state.getBlock()).withPropertiesOf(state), 3);
                         }
                     }
                 }
