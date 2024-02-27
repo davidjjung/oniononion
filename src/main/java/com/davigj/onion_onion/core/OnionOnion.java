@@ -11,7 +11,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-import static com.davigj.onion_onion.core.registry.OOConstants.initializeObbyMap;
+import static com.davigj.onion_onion.core.other.OOConstants.initializeObbyMap;
 
 @Mod(OnionOnion.MOD_ID)
 public class OnionOnion {

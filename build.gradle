@@ -80,6 +80,7 @@ dependencies {
     implementation fg.deobf("com.teamabnormals:blueprint:${project.minecraft}-${project.blueprint}")
     implementation fg.deobf("maven.modrinth:R2OftAxM:umpztmTl")
     compileOnly fg.deobf("maven.modrinth:bCxmmxKN:HwaPTwXt")
+    compileOnly fg.deobf("maven.modrinth:frame-changer:1.0.0")
 
     compileOnly fg.deobf("mezz.jei:jei-${project.minecraft}-common-api:${project.jei}")
     compileOnly fg.deobf("mezz.jei:jei-${project.minecraft}-forge-api:${project.jei}")

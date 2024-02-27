@@ -2,7 +2,6 @@ package com.davigj.onion_onion.core.other;
 
 import com.davigj.onion_onion.core.OOConfig;
 import com.davigj.onion_onion.core.OnionOnion;
-import com.davigj.onion_onion.core.registry.OOConstants;
 import com.davigj.onion_onion.core.registry.OODamageSources;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -20,7 +19,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -34,7 +32,7 @@ import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 import java.util.List;
 
-import static com.davigj.onion_onion.core.registry.OOConstants.OBBY_MAP;
+import static com.davigj.onion_onion.core.other.OOConstants.OBBY_MAP;
 
 @Mod.EventBusSubscriber(modid = OnionOnion.MOD_ID)
 public class OOEvents {
