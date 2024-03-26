@@ -11,7 +11,7 @@ itemIcon = "farmersdelight:onion"
 configBackground = "minecraft:textures/block/dirt.png"
 authors = "DavigJ"
 credits = "Vectorwing made a cool mod, Evo made cool sprites, and Uraneptus made a cool 1.20 port"
-displayURL = "https://github.com/davidjjung/oniononion"
+displayURL = "https://modrinth.com/mod/onion-onion"
 displayName = "Onion Onion"
 description = '''Giving onions some (ill-deserved?) love'''
 

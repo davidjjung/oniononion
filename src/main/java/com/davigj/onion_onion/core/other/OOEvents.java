@@ -27,10 +27,12 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.orcinus.overweightfarming.init.OFBlocks;
 import vectorwing.farmersdelight.common.block.entity.CuttingBoardBlockEntity;
-import vectorwing.farmersdelight.common.item.KnifeItem;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
+import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 import java.util.List;
+
+import static com.davigj.onion_onion.core.other.OOConstants.OBBY_MAP;
 
 @Mod.EventBusSubscriber(modid = OnionOnion.MOD_ID)
 public class OOEvents {
@@ -39,11 +41,12 @@ public class OOEvents {
         if (!OOConfig.COMMON.onionFun.get()) {
             return;
         }
+        boolean OWFLoaded = ModList.get().isLoaded("overweight_farming");
         Player player = event.getEntity();
         ItemStack heldItem = player.getItemInHand(event.getHand());
         BlockState clickedBlockState = player.level().getBlockState(event.getPos());
         RandomSource random = player.getRandom();
-        if (ModList.get().isLoaded("overweight_farming") && OOConfig.COMMON.bigOnion.get()) {
+        if (OWFLoaded && OOConfig.COMMON.bigOnion.get()) {
             if (clickedBlockState.getBlock() == OFBlocks.OVERWEIGHT_ONION.get() &&
                     heldItem.getItem() instanceof AxeItem) {
                 if (player.level().isClientSide) {
@@ -58,8 +61,18 @@ public class OOEvents {
         }
         if (clickedBlockState.getBlock() == ModBlocks.CUTTING_BOARD.get() && !player.isShiftKeyDown()) {
             BlockEntity tileEntity = player.level().getBlockEntity(event.getPos());
-            if (tileEntity instanceof CuttingBoardBlockEntity board && board.getStoredItem().getItem() == vectorwing.farmersdelight.common.registry.ModItems.ONION.get()) {
-                if (heldItem.getItem() instanceof KnifeItem) {
+            if (tileEntity instanceof CuttingBoardBlockEntity board) {
+                boolean activateTears = false;
+                if (OWFLoaded && OOConfig.COMMON.bigOnion.get()) {
+                    if (heldItem.getItem() instanceof AxeItem && board.getStoredItem().is(OFBlocks.OVERWEIGHT_ONION.get().asItem())) {
+                        activateTears = true;
+                    }
+                }
+                if (heldItem.is(ForgeTags.TOOLS_KNIVES) && board.getStoredItem().getItem()
+                        == vectorwing.farmersdelight.common.registry.ModItems.ONION.get()) {
+                    activateTears = true;
+                }
+                if (activateTears) {
                     if (player.level().isClientSide) {
                         for (int i = 0; i < 3; i++) {
                             player.level().addParticle(ParticleTypes.SNEEZE, event.getPos().getX() + random.nextDouble(),
@@ -132,14 +145,14 @@ public class OOEvents {
                         } else {
                             player.level().setBlockAndUpdate(pos.below(), Blocks.WEEPING_VINES.defaultBlockState());
                         }
-                    } else if (state.is(Blocks.OBSIDIAN) && random.nextDouble() <= OOConfig.COMMON.cryingObby.get()) {
+                    } else if (OBBY_MAP.containsKey(state.getBlock()) && random.nextDouble() <= OOConfig.COMMON.cryingObby.get()) {
                         if (player.level().isClientSide) {
                             for (int i = 0; i < 4; i++) {
                                 player.level().addParticle(ParticleTypes.DRAGON_BREATH, pos.getX() + random.nextDouble() - 0.5,
                                         pos.getY() + random.nextDouble(), pos.getZ() + random.nextDouble() - 0.5, 0, 0, 0);
                             }
                         } else {
-                            player.level().setBlockAndUpdate(pos, Blocks.CRYING_OBSIDIAN.defaultBlockState());
+                            player.level().setBlock(pos, OBBY_MAP.get(state.getBlock()).withPropertiesOf(state), 3);
                         }
                     }
                 }
