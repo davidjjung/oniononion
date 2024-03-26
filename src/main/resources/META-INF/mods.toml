@@ -11,7 +11,7 @@ itemIcon = "farmersdelight:onion"
 configBackground = "minecraft:textures/block/dirt.png"
 authors = "DavigJ"
 credits = "Thanks to Vectorwing for makin' such a robust food mod. And thanks to Evo for the texture work!"
-displayURL = "https://github.com/davidjjung/oniononion"
+displayURL = "https://modrinth.com/mod/onion-onion"
 displayName = "Onion Onion"
 description = '''
     Giving onions some (ill-deserved?) love
