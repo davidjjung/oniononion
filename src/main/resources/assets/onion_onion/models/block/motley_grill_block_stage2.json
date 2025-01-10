@@ -44,6 +44,7 @@
 			}
 		},
 		{
+			"shade": false,
 			"from": [1.9, 6, 6],
 			"to": [5.9, 8, 10],
 			"rotation": {"angle": 45, "axis": "z", "origin": [8, 7, 8]},
