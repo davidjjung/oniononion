@@ -10,7 +10,7 @@ logoFile = "logo.png"
 itemIcon = "farmersdelight:onion"
 configBackground = "minecraft:textures/block/dirt.png"
 authors = "DavigJ"
-credits = "Vectorwing made a cool mod, Evo made cool sprites, and Uraneptus made a cool 1.20 port"
+credits = "Evo, Uraneptus"
 displayURL = "https://modrinth.com/mod/onion-onion"
 displayName = "Onion Onion"
 description = '''Giving onions some (ill-deserved?) love'''
@@ -18,7 +18,7 @@ description = '''Giving onions some (ill-deserved?) love'''
 [[dependencies.onion_onion]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.20.1,1.21)"
+versionRange = "[1.20.1,1.20.2)"
 ordering = "NONE"
 side = "BOTH"
 
