@@ -39,8 +39,8 @@ public class OnionOnion {
 
     private void commonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            OOCompat.registerCompat();
             initializeObbyMap();
-            event.enqueueWork(OOCompat::registerCompat);
         });
     }
 
