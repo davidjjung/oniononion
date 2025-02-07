@@ -1,5 +1,6 @@
 package com.davigj.onion_onion.core;
 
+import com.davigj.onion_onion.core.other.OOCompat;
 import com.davigj.onion_onion.core.registry.OOItems;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import net.minecraftforge.api.distmarker.Dist;
@@ -39,6 +40,7 @@ public class OnionOnion {
     private void commonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             initializeObbyMap();
+            event.enqueueWork(OOCompat::registerCompat);
         });
     }
 
