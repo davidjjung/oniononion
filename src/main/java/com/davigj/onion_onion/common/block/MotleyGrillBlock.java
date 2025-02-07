@@ -7,9 +7,12 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -33,6 +36,20 @@ public class MotleyGrillBlock extends FeastBlock {
 
     public MotleyGrillBlock(Properties properties, Supplier<Item> servingItem, boolean hasLeftovers) {
         super(properties, servingItem, hasLeftovers);
+    }
+
+    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+        BlockState platform = level.getBlockState(pos.below());
+        BlockState subPlatform = level.getBlockState(pos.below(2));
+
+        if (platform.is(ModTags.HEAT_SOURCES) ||
+                (platform.is(ModTags.HEAT_CONDUCTORS) && subPlatform.is(ModTags.HEAT_SOURCES))) {
+            if (state.getValue(SERVINGS) == 0 && !entity.isSteppingCarefully() && entity instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)entity)) {
+                entity.hurt(level.damageSources().hotFloor(), 1.0F);
+            }
+        }
+
+        super.stepOn(level, pos, state, entity);
     }
 
     public void animateTick(@NotNull BlockState state, Level level, BlockPos pos, @NotNull RandomSource random) {
