@@ -39,7 +39,7 @@ public class OnionOnion {
 
     private void commonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            OOCompat.registerCompat();
+            OOCompat.registerCompostables();
             initializeObbyMap();
         });
     }
