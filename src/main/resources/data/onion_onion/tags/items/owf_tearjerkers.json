@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "overweight_farming:overweight_onion_block",
+      "required": false
+    }
+  ]
+}

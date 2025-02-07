@@ -2,24 +2,14 @@ package com.davigj.onion_onion.core.other;
 
 import com.davigj.onion_onion.core.OOConfig;
 import com.davigj.onion_onion.core.OnionOnion;
-import com.davigj.onion_onion.core.registry.OODamageSources;
-import net.minecraft.core.BlockPos;
+import com.davigj.onion_onion.core.other.tags.OOItemTags;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.Ghast;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -30,9 +20,8 @@ import vectorwing.farmersdelight.common.block.entity.CuttingBoardBlockEntity;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
 
-import java.util.List;
-
-import static com.davigj.onion_onion.core.other.OOConstants.OBBY_MAP;
+import static com.davigj.onion_onion.core.other.OnionCutUtil.affectBlocks;
+import static com.davigj.onion_onion.core.other.OnionCutUtil.affectLivingEntities;
 
 @Mod.EventBusSubscriber(modid = OnionOnion.MOD_ID)
 public class OOEvents {
@@ -55,8 +44,8 @@ public class OOEvents {
                                 event.getPos().getY() + 0.5, event.getPos().getZ() + (2 * random.nextDouble()), 0, 0, 0);
                     }
                 }
-                affectLivingEntities(event.getPos(), player, false);
-                affectBlocks(event.getPos(), player);
+                affectLivingEntities(event.getPos(), player, player.level(),false);
+                affectBlocks(event.getPos(), player.level());
             }
         }
         if (clickedBlockState.getBlock() == ModBlocks.CUTTING_BOARD.get() && !player.isShiftKeyDown()) {
@@ -64,12 +53,11 @@ public class OOEvents {
             if (tileEntity instanceof CuttingBoardBlockEntity board) {
                 boolean activateTears = false;
                 if (OWFLoaded && OOConfig.COMMON.bigOnion.get()) {
-                    if (heldItem.getItem() instanceof AxeItem && board.getStoredItem().is(OFBlocks.OVERWEIGHT_ONION.get().asItem())) {
+                    if (heldItem.getItem() instanceof AxeItem && board.getStoredItem().is(OOItemTags.OWF_TEARJERKERS)) {
                         activateTears = true;
                     }
                 }
-                if (heldItem.is(ForgeTags.TOOLS_KNIVES) && board.getStoredItem().getItem()
-                        == vectorwing.farmersdelight.common.registry.ModItems.ONION.get()) {
+                if (heldItem.is(ForgeTags.TOOLS_KNIVES) && board.getStoredItem().is(OOItemTags.TEARJERKERS)) {
                     activateTears = true;
                 }
                 if (activateTears) {
@@ -79,82 +67,8 @@ public class OOEvents {
                                     event.getPos().getY() + 0.5, event.getPos().getZ() + random.nextDouble(), 0, 0, 0);
                         }
                     }
-                    affectLivingEntities(event.getPos(), player, true);
-                    affectBlocks(event.getPos(), player);
-                }
-            }
-        }
-    }
-
-    public static void affectLivingEntities(BlockPos pos, Player player, boolean cuttingBoard) {
-        RandomSource random = player.getRandom();
-        int radius = Math.min(OOConfig.COMMON.onionAOE.get(), 16);
-        AABB boundingBox = new AABB(pos).inflate(radius, radius, radius);
-        int advancementWorthy = 0;
-        List<LivingEntity> livingEntities = player.level().getEntitiesOfClass(LivingEntity.class, boundingBox,
-                (living) -> living != null && living.isAlive());
-        for (LivingEntity livingEntity : livingEntities) {
-            if (!livingEntity.getItemBySlot(EquipmentSlot.HEAD).is(OOItemTags.ONION_PROOF)) {
-                if (!livingEntity.getType().is(OOEntityTypeTags.UNAFFECTED_BY_ONIONS) && OOConfig.COMMON.onionDamage.get()) {
-                    livingEntity.hurt(livingEntity.damageSources().source(OODamageSources.ONION), 1.0F);
-                    advancementWorthy++;
-                    if (player.level().isClientSide) {
-                        for (int i = 0; i < 4; i++) {
-                            player.level().addParticle(ParticleTypes.SPLASH, livingEntity.getX() + random.nextDouble() - 0.5,
-                                    livingEntity.getEyeY(), livingEntity.getZ() + random.nextDouble() - 0.5, 0, 0, 0);
-                        }
-                    }
-                }
-            }
-
-            if (livingEntity instanceof Ghast && random.nextDouble() <= OOConfig.COMMON.ghastCry.get()) {
-                ItemEntity ghastTearEntity = new ItemEntity(player.level(), livingEntity.getX(), livingEntity.getY(),
-                        livingEntity.getZ(), new ItemStack(Items.GHAST_TEAR));
-                player.level().addFreshEntity(ghastTearEntity);
-                if (player instanceof ServerPlayer serverPlayer) {
-                    if (!player.getCommandSenderWorld().isClientSide()) {
-                        OOCriteriaTriggers.ONION_GHAST.trigger((serverPlayer));
-                    }
-                }
-            }
-        }
-        if (cuttingBoard && advancementWorthy >= 10 && player.hasEffect(MobEffects.INVISIBILITY)) {
-            if (player instanceof ServerPlayer serverPlayer) {
-                if (!player.getCommandSenderWorld().isClientSide()) {
-                    OOCriteriaTriggers.ONION_NINJA.trigger((serverPlayer));
-                }
-            }
-        }
-    }
-
-    public static void affectBlocks(BlockPos blockPos, Player player) {
-        int radius = Math.min(OOConfig.COMMON.onionAOE.get(), 16);
-        for (int x = -radius; x <= radius; x++) {
-            for (int y = -radius; y <= radius; y++) {
-                for (int z = -radius; z <= radius; z++) {
-                    BlockPos pos = blockPos.offset(x, y, z);
-                    BlockState state = player.level().getBlockState(pos);
-                    BlockState underState = player.level().getBlockState(pos.below());
-                    RandomSource random = player.getRandom();
-                    if (state.is(Blocks.WEEPING_VINES) && underState.isAir() && random.nextDouble() <= OOConfig.COMMON.weepingVines.get()) {
-                        if (player.level().isClientSide) {
-                            for (int i = 0; i < 4; i++) {
-                                player.level().addParticle(ParticleTypes.HAPPY_VILLAGER, pos.below().getX() + random.nextDouble() - 0.5,
-                                        pos.below().getY() + random.nextDouble(), pos.below().getZ() + random.nextDouble() - 0.5, 0, 0, 0);
-                            }
-                        } else {
-                            player.level().setBlockAndUpdate(pos.below(), Blocks.WEEPING_VINES.defaultBlockState());
-                        }
-                    } else if (OBBY_MAP.containsKey(state.getBlock()) && random.nextDouble() <= OOConfig.COMMON.cryingObby.get()) {
-                        if (player.level().isClientSide) {
-                            for (int i = 0; i < 4; i++) {
-                                player.level().addParticle(ParticleTypes.DRAGON_BREATH, pos.getX() + random.nextDouble() - 0.5,
-                                        pos.getY() + random.nextDouble(), pos.getZ() + random.nextDouble() - 0.5, 0, 0, 0);
-                            }
-                        } else {
-                            player.level().setBlock(pos, OBBY_MAP.get(state.getBlock()).withPropertiesOf(state), 3);
-                        }
-                    }
+                    affectLivingEntities(event.getPos(), player, player.level(), true);
+                    affectBlocks(event.getPos(), player.level());
                 }
             }
         }

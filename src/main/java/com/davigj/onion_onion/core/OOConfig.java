@@ -17,7 +17,7 @@ public class OOConfig {
             builder.push("config");
             onionFun = builder.comment("Do onions have block or entity reactions when cut").define("Onion fun", true);
             bigOnion = builder.comment("Do Big Onion blocks from Overweight Farming trigger the effects of cutting onions when peeled").define("Big onion reactions", true);
-            onionAOE = builder.comment("The range in which blocks and entities are affected by cutting onions. Capped at 16").define("Onion chop radius", 2);
+            onionAOE = builder.comment("The range in which blocks and entities are affected by cutting onions.").defineInRange("Onion chop radius", 2, 0, 16);
             builder.push("entity_changes");
             onionDamage = builder.comment("Do entities take damage from cutting onions nearby").define("Onion damage", true);
             ghastCry = builder.comment("Chance that ghasts drop a tear when cutting onions nearby").define("Ghasts cry", 0.5);
