@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "onion_onion",
+  "version": "${version}",
+  "name": "Onion Onion",
+  "description": "Giving onions some (ill-deserved?) love",
+  "authors": [
+    "DavigJ"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+  "license": "MIT",
+  "icon": "logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.davigj.onion_onion.fabric.OnionOnionFabric"
+    ],
+    "client": [
+      "com.davigj.onion_onion.fabric.client.OnionOnionFabricClient"
+    ]
+  },
+  "mixins": [
+    "onion_onion.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "architectury": ">=13.0.8",
+    "fabric-api": "*",
+    "forgeconfigapiport": "*"
+  },
+  "suggests": {
+    "overweight_farming": "*"
+  }
+}
