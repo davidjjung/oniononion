@@ -6,6 +6,7 @@ import com.davigj.onion_onion.core.registry.OOItems;
 import dev.architectury.event.events.common.InteractionEvent;
 import dev.architectury.event.events.common.PlayerEvent;
 import fuzs.forgeconfigapiport.fabric.api.forge.v4.ForgeConfigRegistry;
+import fuzs.forgeconfigapiport.fabric.api.neoforge.v4.NeoForgeConfigRegistry;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -29,7 +30,7 @@ public final class OnionOnionFabric implements ModInitializer {
         // Run our common setup.
         OnionOnion.init();
         OnionOnion.commonSetup();
-        ForgeConfigRegistry.INSTANCE.register(MOD_ID, ModConfig.Type.COMMON, OOConfig.COMMON_SPEC);
+        NeoForgeConfigRegistry.INSTANCE.register(MOD_ID, ModConfig.Type.COMMON, OOConfig.COMMON_SPEC);
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS).register((event) -> {
             for (Supplier<Item> itemSupplier : OOItems.FOOD) {
                 event.addAfter(Items.RABBIT_STEW.getDefaultInstance(), itemSupplier.get().getDefaultInstance());

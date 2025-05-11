@@ -2,9 +2,7 @@ package com.davigj.onion_onion.neoforge;
 
 import com.davigj.onion_onion.core.OOConfig;
 import com.davigj.onion_onion.core.OnionOnion;
-import com.davigj.onion_onion.core.other.OOEvents;
 import com.davigj.onion_onion.core.registry.OOItems;
-import fuzs.forgeconfigapiport.neoforge.api.forge.v4.ForgeConfigRegistry;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
@@ -15,8 +13,9 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.gui.ConfigurationScreen;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 import java.util.function.Supplier;
 
@@ -28,7 +27,8 @@ public final class OnionOnionNeoForge {
         // Run our common setup.
         OnionOnion.init();
         bus.addListener(this::commonSetup);
-        ForgeConfigRegistry.INSTANCE.register(MOD_ID, ModConfig.Type.COMMON, OOConfig.COMMON_SPEC);
+        container.registerConfig(ModConfig.Type.COMMON, OOConfig.COMMON_SPEC);
+        container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
     }
 
     @SubscribeEvent

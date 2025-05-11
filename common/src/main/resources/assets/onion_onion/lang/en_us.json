@@ -7,6 +7,17 @@
   "death.attack.onion_damage": "%s cried to death",
   "death.attack.onion_damage.player": "%1s cried to death to avoid %2s",
 
+  "onion_onion.configuration.onion_fun": "Fun Onions",
+  "onion_onion.configuration.big_onion": "Big Fun Onions",
+  "onion_onion.configuration.onion_aoe": "Onion Chop Radius",
+  "onion_onion.configuration.onion_damage": "Onion Damage",
+  "onion_onion.configuration.entity_changes": "Entity Changes",
+  "onion_onion.configuration.block_changes": "Entity Changes",
+  "onion_onion.configuration.config": "Common",
+  "onion_onion.configuration.crying_obby": "Crying Obsidian",
+  "onion_onion.configuration.weeping_vines": "Weeping Vines",
+  "onion_onion.configuration.ghast_cry": "Ghasts cry",
+
   "advancements.onion_onion.onion_ninja.description": "While invisible, bring at least ten creatures to tears by cutting Onions",
   "advancements.onion_onion.onion_ninja.title": "Ninjas Cutting Onions Again...",
   "advancements.onion_onion.onion_ghast.description": "Make a Ghast shed a tear by cutting Onions nearby",

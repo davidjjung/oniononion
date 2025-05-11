@@ -39,7 +39,6 @@ dependencies {
 
     // Farmer's Delight
     modImplementation("maven.modrinth:farmers-delight:${fd_version}")
-    modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-neoforge:${config_version}"
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
