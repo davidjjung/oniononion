@@ -32,7 +32,7 @@ public final class OnionOnionFabric implements ModInitializer {
         OnionOnion.commonSetup();
         NeoForgeConfigRegistry.INSTANCE.register(MOD_ID, ModConfig.Type.COMMON, OOConfig.COMMON_SPEC);
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS).register((event) -> {
-            for (Supplier<Item> itemSupplier : OOItems.FOOD) {
+            for (Supplier<Item> itemSupplier : OOItems.FOOD.reversed()) {
                 event.addAfter(Items.RABBIT_STEW.getDefaultInstance(), itemSupplier.get().getDefaultInstance());
             }
         });

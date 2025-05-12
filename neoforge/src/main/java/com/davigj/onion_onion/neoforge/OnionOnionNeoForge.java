@@ -27,6 +27,7 @@ public final class OnionOnionNeoForge {
         // Run our common setup.
         OnionOnion.init();
         bus.addListener(this::commonSetup);
+        bus.addListener(this::buildCreativeModeTabs);
         container.registerConfig(ModConfig.Type.COMMON, OOConfig.COMMON_SPEC);
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
     }
@@ -39,7 +40,7 @@ public final class OnionOnionNeoForge {
     @SubscribeEvent
     private void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
-            for (Supplier<Item> itemSupplier : OOItems.FOOD) {
+            for (Supplier<Item> itemSupplier : OOItems.FOOD.reversed()) {
                 event.insertAfter(Items.RABBIT_STEW.getDefaultInstance(), itemSupplier.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             }
         }

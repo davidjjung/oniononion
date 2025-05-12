@@ -1,12 +1,12 @@
 package com.davigj.onion_onion.common.block;
 
+import com.davigj.onion_onion.core.PlatformMethods;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -44,17 +44,12 @@ public class MotleyGrillBlock extends FeastBlock {
 
         if (platform.is(ModTags.HEAT_SOURCES) ||
                 (platform.is(ModTags.HEAT_CONDUCTORS) && subPlatform.is(ModTags.HEAT_SOURCES))) {
-            if (state.getValue(SERVINGS) == 0 && !entity.isSteppingCarefully() && entity instanceof LivingEntity living && hasFrostWalker(living)) {
+            if (state.getValue(SERVINGS) == 0 && !entity.isSteppingCarefully() && entity instanceof LivingEntity) {
                 entity.hurt(level.damageSources().hotFloor(), 1.0F);
             }
         }
 
         super.stepOn(level, pos, state, entity);
-    }
-
-    private boolean hasFrostWalker(LivingEntity living) {
-        return false;
-
     }
 
     public void animateTick(@NotNull BlockState state, Level level, BlockPos pos, @NotNull RandomSource random) {
@@ -95,11 +90,11 @@ public class MotleyGrillBlock extends FeastBlock {
             level.destroyBlock(pos, true);
             return ItemInteractionResult.SUCCESS;
         } else {
-            ItemStack servingStack = this.getServingItem(state);
-            Item serving = servingStack.getItem();
+            ItemStack serving = this.getServingItem(state);
+            ItemStack remainder = PlatformMethods.getRemainder(serving);
             ItemStack heldStack = player.getItemInHand(hand);
             if (servings > 0) {
-                if (!serving.hasCraftingRemainingItem() || heldStack.is(serving)) {
+                if (remainder.isEmpty() || ItemStack.isSameItem(heldStack, remainder)) {
                     BlockState platform = level.getBlockState(pos.below());
                     BlockState subPlatform = level.getBlockState(pos.below().below());
                     if (servings == 4 && (platform.is(ModTags.HEAT_SOURCES)
@@ -110,12 +105,12 @@ public class MotleyGrillBlock extends FeastBlock {
                         }
                     }
                     level.setBlock(pos, (BlockState) state.setValue(this.getServingsProperty(), servings - 1), 3);
-                    if (!player.getAbilities().instabuild && serving.hasCraftingRemainingItem()) {
+                    if (!player.getAbilities().instabuild && !remainder.isEmpty()) {
                         heldStack.shrink(1);
                     }
 
-                    if (!player.getInventory().add(servingStack)) {
-                        player.drop(servingStack, false);
+                    if (!player.getInventory().add(serving)) {
+                        player.drop(serving, false);
                     }
 
                     if ((Integer) level.getBlockState(pos).getValue(this.getServingsProperty()) == 0 && !this.hasLeftovers) {
@@ -126,7 +121,7 @@ public class MotleyGrillBlock extends FeastBlock {
                     return ItemInteractionResult.SUCCESS;
                 }
 
-                player.displayClientMessage(TextUtils.getTranslation("block.feast.use_container", new Object[]{serving.getCraftingRemainingItem().getDefaultInstance().getHoverName()}), true);
+                player.displayClientMessage(TextUtils.getTranslation("block.feast.use_container", new Object[]{remainder.getHoverName()}), true);
             }
 
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
