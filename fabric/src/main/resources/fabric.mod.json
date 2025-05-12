@@ -8,8 +8,9 @@
     "DavigJ"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://modrinth.com/mod/onion-onion",
+    "sources": "https://github.com/davidjjung/oniononion",
+    "issues": "https://github.com/davidjjung/oniononion/issues"
   },
   "license": "MIT",
   "icon": "logo.png",
