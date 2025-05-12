@@ -12,6 +12,9 @@ dependencies {
     modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
     modCompileOnly("maven.modrinth:farmers-delight-refabricated:${fdrf_version}")
     modCompileOnly("maven.modrinth:overweight-farming:RBuA8OZr")
+    modCompileOnly("com.davigj:framechanger:3.0.0") {
+        transitive = false
+    }
 
     modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${config_version}"
 }

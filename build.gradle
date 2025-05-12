@@ -45,6 +45,11 @@ subprojects {
             name = "Fuzs Mod Resources"
             url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
         }
+        maven {
+            name = "Cassian's Maven"
+            url = "https://maven.cassian.cc/"
+        }
+
     }
 
     loom {
