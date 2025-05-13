@@ -1,0 +1,14 @@
+{
+  "item.onion_onion.onion_slice": "Rebanadas de cebolla",
+  "item.onion_onion.onion_rings": "Aros de cebolla",
+  "item.onion_onion.motley_grill": "Plato de surtido a la parrilla",
+  "block.onion_onion.motley_grill_block": "Surtido a la parrilla",
+
+  "death.attack.onion_damage": "%s lloró hasta morir",
+  "death.attack.onion_damage.player": "%1s lloró hasta la muerte para evitar a %2s",
+
+  "advancements.onion_onion.onion_ninja.description": "Mientras eres invisible, haz que al menos 10 criaturas lloren por cortar cebollas",
+  "advancements.onion_onion.onion_ninja.title": "Los ninjas están cortando cebollas otra vez...",
+  "advancements.onion_onion.onion_ghast.description": "Haz que un Ghast suelte una lágrima al cortar cebollas cerca de él",
+  "advancements.onion_onion.onion_ghast.title": "Llora un río"
+}

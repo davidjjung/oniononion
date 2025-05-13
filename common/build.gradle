@@ -1,0 +1,20 @@
+architectury {
+    common rootProject.enabled_platforms.split(',')
+}
+
+dependencies {
+    // We depend on Fabric Loader here to use the Fabric @Environment annotations,
+    // which get remapped to the correct annotations on each platform.
+    // Do NOT use other classes from Fabric Loader.
+    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+
+    // Architectury API. This is optional, and you can comment it out if you don't need it.
+    modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
+    modCompileOnly("maven.modrinth:farmers-delight-refabricated:${fdrf_version}")
+    modCompileOnly("maven.modrinth:overweight-farming:RBuA8OZr")
+    modCompileOnly("com.davigj:framechanger:3.0.0") {
+        transitive = false
+    }
+
+    modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${config_version}"
+}
