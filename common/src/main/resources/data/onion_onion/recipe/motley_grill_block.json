@@ -16,7 +16,7 @@
       "item": "farmersdelight:cooked_chicken_cuts"
     },
     "S": {
-      "tag": "c:salad_ingredients"
+      "tag": "c:foods/leafy_green"
     },
     "T": {
       "item": "minecraft:iron_ingot"
