@@ -35,6 +35,10 @@ repositories {
             includeGroup "com.github.Chocohead"
         }
     }
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+    }
 }
 
 dependencies {
@@ -51,6 +55,9 @@ dependencies {
     modImplementation("com.github.Chocohead:Fabric-ASM:${fabric_asm_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
+
+    // EMI - Farmer's Delight Refabricated has direct integration.
+    modLocalRuntime "dev.emi:emi-fabric:${emi_version}"
 
     modImplementation("maven.modrinth:farmers-delight-refabricated:${fdrf_version}")
     modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${config_version}"
