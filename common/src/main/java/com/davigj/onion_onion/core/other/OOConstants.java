@@ -10,9 +10,10 @@ import java.util.Map;
 
 public class OOConstants {
     public static final Map<Block, Block> OBBY_MAP = new HashMap<>();
+
     public static void initializeObbyMap() {
         OBBY_MAP.put(Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN);
-        if (Platform.isModLoaded("frame_changer")) {
+        if (Platform.isModLoaded("frame_changer") && Platform.isFabric()) {
             OBBY_MAP.put(FCBlocks.OBSIDIAN_BRICKS.get(), FCBlocks.CRYING_OBSIDIAN_BRICKS.get());
             OBBY_MAP.put(FCBlocks.OBSIDIAN_PILLAR.get(), FCBlocks.CRYING_OBSIDIAN_PILLAR.get());
             OBBY_MAP.put(FCBlocks.CHISELED_OBSIDIAN.get(), FCBlocks.CRYING_CHISELED_OBSIDIAN.get());

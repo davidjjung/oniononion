@@ -3,10 +3,7 @@ package com.davigj.onion_onion.neoforge;
 import com.davigj.onion_onion.core.OOConfig;
 import com.davigj.onion_onion.core.OnionOnion;
 import com.davigj.onion_onion.core.registry.OOItems;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -16,18 +13,20 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 
 import java.util.function.Supplier;
 
 import static com.davigj.onion_onion.core.OnionOnion.MOD_ID;
+import static com.davigj.onion_onion.neoforge.OONFDataMapUtil.WEEPING_DATA;
 
 @Mod(MOD_ID)
 public final class OnionOnionNeoForge {
     public OnionOnionNeoForge(IEventBus bus, ModContainer container) {
-        // Run our common setup.
         OnionOnion.init();
         bus.addListener(this::commonSetup);
         bus.addListener(this::buildCreativeModeTabs);
+        bus.addListener(this::registerDataMapTypes);
         container.registerConfig(ModConfig.Type.COMMON, OOConfig.COMMON_SPEC);
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
     }
@@ -45,4 +44,10 @@ public final class OnionOnionNeoForge {
             }
         }
     }
+
+    @SubscribeEvent
+    private void registerDataMapTypes(RegisterDataMapTypesEvent event) {
+        event.register(WEEPING_DATA);
+    }
+
 }

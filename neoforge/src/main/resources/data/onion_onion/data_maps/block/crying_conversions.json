@@ -1,0 +1,38 @@
+{
+  "replace": false,
+  "values": {
+    "minecraft:obsidian": {
+      "result": "minecraft:crying_obsidian"
+    },
+    "frame_changer:obsidian_bricks": {
+      "result": "frame_changer:crying_obsidian_bricks"
+    },
+    "frame_changer:obsidian_pillar": {
+      "result": "frame_changer:crying_obsidian_pillar"
+    },
+    "frame_changer:chiseled_obsidian": {
+      "result": "frame_changer:crying_chiseled_obsidian"
+    },
+    "frame_changer:polished_obsidian": {
+      "result": "frame_changer:crying_polished_obsidian"
+    },
+    "frame_changer:obsidian_brick_slab": {
+      "result": "frame_changer:crying_obsidian_brick_slab"
+    },
+    "frame_changer:polished_obsidian_slab": {
+      "result": "frame_changer:crying_polished_obsidian_slab"
+    },
+    "frame_changer:obsidian_brick_stairs": {
+      "result": "frame_changer:crying_obsidian_brick_stairs"
+    },
+    "frame_changer:polished_obsidian_stairs": {
+      "result": "frame_changer:crying_polished_obsidian_stairs"
+    },
+    "frame_changer:obsidian_brick_wall": {
+      "result": "frame_changer:crying_obsidian_brick_wall"
+    },
+    "frame_changer:polished_obsidian_wall": {
+      "result": "frame_changer:crying_polished_obsidian_wall"
+    }
+  }
+}

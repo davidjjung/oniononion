@@ -5,6 +5,7 @@ import com.davigj.onion_onion.core.PlatformMethods;
 import com.davigj.onion_onion.core.other.tags.OOItemTags;
 import com.davigj.onion_onion.core.registry.OOCriteriaTriggers;
 import com.davigj.onion_onion.core.registry.OODamageSources;
+import dev.architectury.platform.Platform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -86,13 +87,16 @@ public class OnionCutUtil {
                             }
                             level.setBlockAndUpdate(pos.below(), Blocks.WEEPING_VINES.defaultBlockState());
                         }
-                    } else if (OBBY_MAP.containsKey(state.getBlock()) && random.nextDouble() <= OOConfig.COMMON.cryingObby.get()) {
-                        if (level instanceof ServerLevel server) {
-                            for (int i = 0; i < 4; i++) {
-                                server.sendParticles(ParticleTypes.DRAGON_BREATH, pos.getX() + random.nextDouble() - 0.5,
-                                        pos.getY() + random.nextDouble(), pos.getZ() + random.nextDouble() - 0.5, 1, 0, 0, 0, 0.0);
+                    }
+                    if (Platform.isFabric()) {
+                        if (OBBY_MAP.containsKey(state.getBlock()) && random.nextDouble() <= OOConfig.COMMON.cryingObby.get()) {
+                            if (level instanceof ServerLevel server) {
+                                for (int i = 0; i < 4; i++) {
+                                    server.sendParticles(ParticleTypes.DRAGON_BREATH, pos.getX() + random.nextDouble() - 0.5,
+                                            pos.getY() + random.nextDouble(), pos.getZ() + random.nextDouble() - 0.5, 1, 0, 0, 0, 0.0);
+                                }
+                                level.setBlock(pos, OBBY_MAP.get(state.getBlock()).withPropertiesOf(state), 3);
                             }
-                            level.setBlock(pos, OBBY_MAP.get(state.getBlock()).withPropertiesOf(state), 3);
                         }
                     }
                 }
