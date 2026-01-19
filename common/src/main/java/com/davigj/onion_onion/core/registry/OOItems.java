@@ -28,7 +28,7 @@ public class OOItems {
 
     public static final Supplier<Item> MOTLEY_GRILL = HELPER.register("motley_grill", () -> new ConsumableItem(
             new Item.Properties().food((new FoodProperties.Builder()).nutrition(9).saturationModifier(0.7F)
-                    .effect(new MobEffectInstance(Holder.direct(ModEffects.NOURISHMENT.value()), 180 * 20), 1.0F).build())
+                    .effect(new MobEffectInstance(ModEffects.NOURISHMENT, 180 * 20), 1.0F).build())
                     .craftRemainder(Items.BOWL).stacksTo(16), true));
 
 
