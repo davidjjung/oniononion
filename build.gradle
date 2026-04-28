@@ -78,7 +78,7 @@ sourceSets.main.resources {
 dependencies {
     minecraft "net.minecraftforge:forge:${project.minecraft}-${project.forge}"
     implementation fg.deobf("com.teamabnormals:blueprint:${project.minecraft}-${project.blueprint}")
-    implementation fg.deobf("maven.modrinth:farmers-delight:NcRp00OO")
+    implementation fg.deobf("maven.modrinth:farmers-delight:aKcbt91p")
     compileOnly fg.deobf("maven.modrinth:overweight-farming:cRR55xmK")
     compileOnly fg.deobf("maven.modrinth:frame-changer:3Ntit21K")
     runtimeOnly fg.deobf("maven.modrinth:create-alloyed:7z00Vc3k")
@@ -92,7 +92,7 @@ dependencies {
 }
 
 repositories {
-    maven { url "https://maven.jaackson.me" }
+    maven { url "https://maven.teamabnormals.com" }
     maven { url "https://dvs1.progwml6.com/files/maven/" }
     maven { url "https://modmaven.k-4u.nl" }
     maven { url "https://www.cursemaven.com" }

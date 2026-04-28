@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "onion_onion:motley_grill_block",
+      "required": false
+    }
+  ]
+}

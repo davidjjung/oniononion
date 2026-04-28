@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.orcinus.overweightfarming.init.OFBlocks;
 import vectorwing.farmersdelight.common.block.entity.CuttingBoardBlockEntity;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
-import vectorwing.farmersdelight.common.tag.ForgeTags;
+import vectorwing.farmersdelight.common.tag.CommonTags;
 
 import static com.davigj.onion_onion.core.other.OnionCutUtil.affectBlocks;
 import static com.davigj.onion_onion.core.other.OnionCutUtil.affectLivingEntities;
@@ -57,7 +57,7 @@ public class OOEvents {
                         activateTears = true;
                     }
                 }
-                if (heldItem.is(ForgeTags.TOOLS_KNIVES) && board.getStoredItem().is(OOItemTags.TEARJERKERS)) {
+                if (heldItem.is(CommonTags.Items.TOOLS_KNIVES) && board.getStoredItem().is(OOItemTags.TEARJERKERS)) {
                     activateTears = true;
                 }
                 if (activateTears) {

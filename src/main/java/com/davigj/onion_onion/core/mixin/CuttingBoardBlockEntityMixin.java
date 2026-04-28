@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import vectorwing.farmersdelight.common.block.entity.CuttingBoardBlockEntity;
 import vectorwing.farmersdelight.common.block.entity.SyncedBlockEntity;
-import vectorwing.farmersdelight.common.tag.ForgeTags;
+import vectorwing.farmersdelight.common.tag.CommonTags;
 
 import static com.davigj.onion_onion.core.other.OnionCutUtil.affectBlocks;
 import static com.davigj.onion_onion.core.other.OnionCutUtil.affectLivingEntities;
@@ -45,7 +45,7 @@ public class CuttingBoardBlockEntityMixin extends SyncedBlockEntity {
                     activateTears = true;
                 }
             }
-            if (stack.is(ForgeTags.TOOLS_KNIVES) && victim.is(OOItemTags.TEARJERKERS)) {
+            if (stack.is(CommonTags.Items.TOOLS_KNIVES) && victim.is(OOItemTags.TEARJERKERS)) {
                 activateTears = true;
             }
             if (activateTears) {

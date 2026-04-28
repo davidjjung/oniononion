@@ -42,8 +42,8 @@ public class MotleyGrillBlock extends FeastBlock {
         BlockState platform = level.getBlockState(pos.below());
         BlockState subPlatform = level.getBlockState(pos.below(2));
 
-        if (platform.is(ModTags.HEAT_SOURCES) ||
-                (platform.is(ModTags.HEAT_CONDUCTORS) && subPlatform.is(ModTags.HEAT_SOURCES))) {
+        if (platform.is(ModTags.Blocks.HEAT_SOURCES) ||
+                (platform.is(ModTags.Blocks.HEAT_CONDUCTORS) && subPlatform.is(ModTags.Blocks.HEAT_SOURCES))) {
             if (state.getValue(SERVINGS) == 0 && !entity.isSteppingCarefully() && entity instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)entity)) {
                 entity.hurt(level.damageSources().hotFloor(), 1.0F);
             }
@@ -56,8 +56,8 @@ public class MotleyGrillBlock extends FeastBlock {
         BlockState platform = level.getBlockState(pos.below());
         BlockState subPlatform = level.getBlockState(pos.below(2));
 
-        if (platform.is(ModTags.HEAT_SOURCES) ||
-                (platform.is(ModTags.HEAT_CONDUCTORS) && subPlatform.is(ModTags.HEAT_SOURCES))) {
+        if (platform.is(ModTags.Blocks.HEAT_SOURCES) ||
+                (platform.is(ModTags.Blocks.HEAT_CONDUCTORS) && subPlatform.is(ModTags.Blocks.HEAT_SOURCES))) {
             float f = random.nextFloat();
             double centerX = pos.getX() + 0.5;
             double centerY = pos.getY() + 0.65;
@@ -96,8 +96,8 @@ public class MotleyGrillBlock extends FeastBlock {
                 if (!serving.hasCraftingRemainingItem() || heldStack.is(serving.getCraftingRemainingItem().getItem())) {
                     BlockState platform = level.getBlockState(pos.below());
                     BlockState subPlatform = level.getBlockState(pos.below().below());
-                    if (servings == 4 && (platform.is(ModTags.HEAT_SOURCES)
-                            || (platform.is(ModTags.HEAT_CONDUCTORS) && subPlatform.is(ModTags.HEAT_SOURCES)))) {
+                    if (servings == 4 && (platform.is(ModTags.Blocks.HEAT_SOURCES)
+                            || (platform.is(ModTags.Blocks.HEAT_CONDUCTORS) && subPlatform.is(ModTags.Blocks.HEAT_SOURCES)))) {
                         for (int i = 0; i < 4; i++) {
                             level.addParticle(ParticleTypes.ASH, pos.getX() + 0.5 + level.getRandom().nextDouble() - 0.5,
                                     pos.getY() + level.getRandom().nextDouble(), pos.getZ() + level.getRandom().nextDouble() - 0.5, 0, 0, 0);
