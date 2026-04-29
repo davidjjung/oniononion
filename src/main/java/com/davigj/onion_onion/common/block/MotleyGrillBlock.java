@@ -2,7 +2,10 @@ package com.davigj.onion_onion.common.block;
 
 import com.davigj.onion_onion.core.PlatformMethods;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -25,6 +28,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import vectorwing.farmersdelight.common.block.FeastBlock;
+import vectorwing.farmersdelight.common.registry.ModSounds;
 import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.common.utility.TextUtils;
 
@@ -35,7 +39,7 @@ public class MotleyGrillBlock extends FeastBlock {
     protected static final VoxelShape[] GRILL_SHAPE;
 
     public MotleyGrillBlock(Properties properties, Supplier<Item> servingItem, boolean hasLeftovers) {
-        super(properties, servingItem, hasLeftovers);
+        super(properties, servingItem, hasLeftovers, true);
     }
 
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
@@ -113,15 +117,19 @@ public class MotleyGrillBlock extends FeastBlock {
                         player.drop(serving, false);
                     }
 
-                    if ((Integer) level.getBlockState(pos).getValue(this.getServingsProperty()) == 0 && !this.hasLeftovers) {
-                        level.removeBlock(pos, false);
+                    if ((Integer)level.getBlockState(pos).getValue(this.getServingsProperty()) == 0 && !this.hasLeftovers) {
+                        level.destroyBlock(pos, true);
                     }
 
-                    level.playSound((Player) null, pos, SoundEvents.ARMOR_EQUIP_GENERIC.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
+                    level.playSound((Player)null, pos, (SoundEvent) ModSounds.BLOCK_FOOD_TAKE_PORTION.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+                    if (this.hasServingParticles && level instanceof ServerLevel) {
+                        ServerLevel serverLevel = (ServerLevel)level;
+                        serverLevel.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, state), (double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, 3, 0.1, 0.1, 0.1, 0.001);
+                    }
                     return ItemInteractionResult.SUCCESS;
                 }
 
-                player.displayClientMessage(TextUtils.getTranslation("block.feast.use_container", new Object[]{remainder.getHoverName()}), true);
+                player.displayClientMessage(TextUtils.block("feast.use_container", new Object[]{remainder.getHoverName()}), true);
             }
 
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
