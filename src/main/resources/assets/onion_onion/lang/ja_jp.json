@@ -1,0 +1,26 @@
+{
+  "_comment":"3.1.0 Neoforge-1.21.1",
+  "item.onion_onion.onion_slice": "タマネギの薄切り",
+  "item.onion_onion.onion_rings": "オニオンリング",
+  "item.onion_onion.motley_grill": "具だくさんグリル入りのボウル",
+  "block.onion_onion.motley_grill_block": "具だくさんグリル",
+
+  "death.attack.onion_damage": "%sは泣きすぎて死んだ",
+  "death.attack.onion_damage.player": "%1sは%2sを避けようとして泣きすぎて死んだ",
+
+  "onion_onion.configuration.onion_fun": "おたのしみタマネギ",
+  "onion_onion.configuration.big_onion": "大きなおたのしみタマネギ",
+  "onion_onion.configuration.onion_aoe": "タマネギを刻み半径",
+  "onion_onion.configuration.onion_damage": "タマネギダメージ",
+  "onion_onion.configuration.entity_changes": "エンティティ設定",
+  "onion_onion.configuration.block_changes": "ブロック設定",
+  "onion_onion.configuration.config": "Common",
+  "onion_onion.configuration.crying_obby": "泣く黒曜石",
+  "onion_onion.configuration.weeping_vines": "しだれツタ",
+  "onion_onion.configuration.ghast_cry": "ガストが泣く",
+
+  "advancements.onion_onion.onion_ninja.description": "While invisible, bring at least ten creatures to tears by cutting Onions",
+  "advancements.onion_onion.onion_ninja.title": "Ninjas Cutting Onions Again...",
+  "advancements.onion_onion.onion_ghast.description": "Make a Ghast shed a tear by cutting Onions nearby",
+  "advancements.onion_onion.onion_ghast.title": "Cry Me a River"
+}
